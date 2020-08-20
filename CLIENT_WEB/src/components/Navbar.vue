@@ -11,16 +11,10 @@
           </li>
           <!-- Navbar component가 렌더링될때 현재 유저의 로그인 상태를 확인해서 적절한 Navigation bar를 보여준다. -->
           <li class="nav-item dropdown">
-            <a v-if="isAuth" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Hello {{ $root.auth.user.name }}
-            </a>
-            <a v-else class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Register
             </a>
-            <div v-if="isAuth" class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" @click="userLogout">Logout</a>
-            </div>
-            <div v-else class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <router-link to="/login" class="dropdown-item">Login</router-link>
               <div class="dropdown-divider"></div>
               <router-link to="/signup" class="dropdown-item">Sign up</router-link>

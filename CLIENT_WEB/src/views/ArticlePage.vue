@@ -15,7 +15,7 @@
                         </div>
                         
                         <!--  -->
-                        <vue-disqus shortname="vue-community-blog-2" :identifier="article.title" :url="url"></vue-disqus>
+                        <!-- <vue-disqus shortname="vue-community-blog-2" :identifier="article.title" :url="url"></vue-disqus> -->
                     </div>
                 </div>
             </div>

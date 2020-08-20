@@ -10,20 +10,11 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-// 토스트 알림 위한 모듈. vuejs-noty 설치해야한다.
-import VueNoty from 'vuejs-noty'
-
-// 커뮤니티 기능 추가 위한 모듈. vue-disqus 설치해야한다
-import VueDisqus from 'vue-disqus'
-
 // 데려온 fontawesome 라이브러리에 가져온 아이콘들을 추가해준다
 // 아이콘들은 prefix로 가져온다. prefix => fas인 애들을 데려온다.
 library.add(fas)
 
 Vue.component('fontawesome-icon', FontAwesomeIcon);
-
-Vue.use(VueNoty);
-Vue.use(VueDisqus);
 
 Vue.config.productionTip = false
 
@@ -35,7 +26,7 @@ new Vue({
   router,
   data: {
     // localStorage에 저장된 애가 있으면 저장된 데이터를 JSON형태로 auth에 저장.
-    // 없다면 빈 배열ㅇ르 갖고있는다.
+    // 없다면 빈 배열을 갖고있는다.
     auth: authData && authData !== 'undefined' ? JSON.parse(authData) : {}
   },
   render: h => h(App)

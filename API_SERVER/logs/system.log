@@ -1,5 +1,38 @@
-[2020-08-19T17:29:33.501] [DEBUG] SLK9877-LD01-0921 :: REQUEST fno=929 url=/ payload=요청정보
-[2020-08-19T17:29:33.645] [DEBUG] SLK9877-LD01-0921 :: REQUEST fno=929 url=/favicon.ico payload=요청정보
-[2020-08-19T17:31:52.245] [DEBUG] SLK9877-LD01-0921 :: REQUEST fno=929 url=/index.html payload=요청정보
-[2020-08-19T17:32:38.485] [DEBUG] SLK9877-LD01-0921 :: REQUEST fno=929 url=/index.html payload=요청정보
-[2020-08-19T17:33:39.061] [DEBUG] SLK9877-LD01-0921 :: REQUEST fno=929 url=/ payload=요청정보
+[2020-08-20T17:33:17.938] [DEBUG] {
+    "COMPANY_INFO" : {
+        "929" : {
+            "company_name" : "에셋플러스 자산운용",
+            "call_center_phone" : "1577-9876"
+        }    
+    },
+    "VERIFY_INFO" : {
+        "929" : {
+            "expires_in" : 300,
+            "is_allow_simple_regist_yn" : true,
+            "is_verify_name_yn" : true
+        }    
+    }
+}
+[2020-08-20T17:33:17.939] [DEBUG] {}
+[2020-08-20T17:33:46.648] [DEBUG] {
+    "COMPANY_INFO" : {
+        "929" : {
+            "company_name" : "에셋플러스 자산운용",
+            "call_center_phone" : "1577-9876"
+        }    
+    },
+    "VERIFY_INFO" : {
+        "929" : {
+            "expires_in" : 300,
+            "is_allow_simple_regist_yn" : true,
+            "is_verify_name_yn" : true
+        }    
+    }
+}
+[2020-08-20T17:33:46.649] [DEBUG] { fno: '929' }
+[2020-08-20T17:37:35.592] [ERROR] ReferenceError: data is not defined
+    at E:\Workspace\Git\tryNode\API_SERVER\main.js:36:13
+[2020-08-20T17:38:42.713] [ERROR] ReferenceError: data is not defined
+    at E:\Workspace\Git\tryNode\API_SERVER\main.js:12:39
+[2020-08-20T17:40:24.948] [DEBUG] test data => [object Object]
+[2020-08-20T17:41:18.710] [DEBUG] test data => 300
