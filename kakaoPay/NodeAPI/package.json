@@ -1,0 +1,52 @@
+{
+  "name": "kakaocert-api",
+  "version": "1.0.0",
+  "description": "REST API Server for KakaoPay Authentication.",
+  "main": "app.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development MODE=dev nodemon server/app.js --watch server",
+    "test": "cross-env NODE_ENV=development MODE=test node server/app.js",
+    "release": "cross-env NODE_ENV=production MODE=release node server/app.js"
+  },
+  "dev": {
+    "host": "http://localhost",
+    "proxy": "http://localhost:8080",
+    "listen_port": "3003",
+    "request_portA": "3004",
+    "request_portB": "3005"
+  },
+  "test": {
+    "host": "http://10.207.40.31",
+    "proxy": "http://testwebmts.koscom.co.kr:19860",
+    "listen_port": "19870",
+    "request_port": "19880",
+    "request_portB": "19881"
+  },
+  "release": {
+    "host": "http://10.207.40.31",
+    "proxy": "http://testwebmts.koscom.co.kr:19860",
+    "listen_port": "19870",
+    "request_port": "19880",
+    "request_portB": "19881"
+  },
+  "author": "koscom",
+  "license": "ISC",
+  "dependencies": {
+    "cross-env": "^7.0.2",
+    "cryptojs": "^2.5.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "kakaocert": "^1.0.1",
+    "log4js": "^6.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-prettier": "^3.1.4",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.0.5"
+  }
+}
