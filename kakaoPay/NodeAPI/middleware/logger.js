@@ -28,16 +28,30 @@ const writer = log4js.getLogger("default");
 
 module.exports = {
   express: log4js.connectLogger(writer, { level: log4js.levels.TRACE }),
-  debug: (message, apiType = null, apiUrl = null, fno = null, deviceId = null) => {
-    if (apiType) writer.debug(`${deviceId.toString()} :: ${apiType ? "REQUEST" : "RESPONSE"} fno=${fno} url=${apiUrl.toString()} payload=${message}`);
-    else writer.debug(message);
+  debug: (message, req = null, res = null, token = null) => {
+    const DEVICEID = token ? "" : token.deviceId;
+    const HEADER = req ? "REQUEST" : "RESPONSE";
+    const URL = req ? req.url : res.url;
+    const PAYLOAD = message || (req ? req.body : res.body);
+
+    writer.debug(`${HEADER}-${DEVICEID} :: url=${URL} payload=${PAYLOAD}`);
   },
-  warn: (message, apiType = null, apiUrl = null, fno = null, deviceId = null) => {
-    if (apiType) writer.warn(`${deviceId.toString()} :: ${apiType ? "REQUEST" : "RESPONSE"} fno=${fno} url=${apiUrl.toString()} payload=${message}`);
-    else writer.warn(message);
+  warn: (message, req = null, res = null, token = null) => {
+    const DEVICEID = token ? "" : token.deviceId;
+    const HEADER = req ? "REQUEST" : "RESPONSE";
+    const URL = req ? req.url : res.url;
+    const PAYLOAD = message || (req ? req.body : res.body);
+
+    writer.warn(`${HEADER}-${DEVICEID} :: url=${URL} payload=${PAYLOAD}`);
   },
-  error: (message, apiUrl = null, fno = null, deviceId = null) => {
-    if (apiUrl) writer.error(`${deviceId.toString()} :: ERROR fno=${fno} url=${apiUrl} message=[${message.errorCode.toString()}] ${message.errorMessage.toString()}\n`);
-    else writer.error(message);
+  error: (e, req = null, res = null) => {
+    const URL = req ? req.url : res.url;
+
+    if ((req || res) && e.errorCode && e.errorMessage) {
+      const HEADER = req ? "REQUEST" : "RESPONSE";
+      const { errorCode, errorMessage } = e;
+
+      writer.error(`${HEADER} :: url=${URL} error=[${errorCode}] ${errorMessage}\n`);
+    } else writer.error(e);
   },
 };

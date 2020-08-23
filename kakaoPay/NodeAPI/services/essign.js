@@ -1,6 +1,5 @@
 const express = require("express");
-const fs = require("fs");
-const { promisify } = require("util");
+const kakaocert = require("../middleware/kakaocert");
 const logger = require("../middleware/logger");
 const companyInfo = require("../config/companies");
 
@@ -8,14 +7,21 @@ const router = express.Router();
 
 /** 전자서명 요청 - 임의의 접수번호 아이디 보낸다. */
 router.post("/", async (req, res, next) => {
+  logger.debug(req.body, req, null, req.header);
   try {
-    if (companyInfo && req.body && req.body.fno) {
-      logger.debug(`[${companyInfo[req.body.fno].company_name}] kakao request expires in => ${companyInfo[req.body.fno].expires_in}`);
-    }
+    const pageId = req.body.PageId;
+    const deviceId = req.body.DeviceId;
+    const receiptId = kakaocert.requestESign();
 
-    return res.json({
-      receiptId: "1234567890",
+    res.status(200).json({
+      AuthCode: {
+        pageId,
+        deviceId,
+        receiptId,
+        timestamp: "2020-08-23",
+      },
     });
+    logger.debug(res.body, null, res, res.body.AuthCode);
   } catch (e) {
     const err = new Error(e);
     err.status = 500;
