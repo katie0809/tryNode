@@ -1,4 +1,4 @@
-// 테스트앱 버전변경
+// OCR모듈 추가
 const express = require("express");
 const dotenv = require("dotenv");
 
